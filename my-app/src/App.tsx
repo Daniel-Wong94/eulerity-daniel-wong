@@ -1,26 +1,24 @@
-import { useEffect, useState } from "react";
-import { PetCard } from "./components";
-import { Pet } from "./types/PetTypes";
-import useFetchPets from "./hooks/useFetchPets";
+import styled from "styled-components";
+import { NavBar, PetFeed, SearchBar, SelectedPets } from "./components";
+import { PetsContextProvider } from "./context/PetsContext";
+
+const StyledApp = styled.div`
+  background-color: rgb(132, 192, 198);
+  height: 100vh;
+`;
 
 const App = () => {
-  const { pets, loading, error } = useFetchPets(
-    "https://eulerity-hackathon.appspot.com/pets"
-  );
-
-  if (loading) return <p>Loading pets...</p>;
-  if (error) return <p>Error fetching pets! Try Refreshing</p>;
-
   return (
-    <div className="App">
-      Pets
-      {pets?.map((pet) => (
-        <PetCard pet={pet} />
-      ))}
-      {/* Search Bar */}
-      {/* Pet Feed */}
-      {/* Selected Pets */}
-    </div>
+    <StyledApp>
+      <PetsContextProvider>
+        <NavBar />
+        <SearchBar />
+        <div>
+          <PetFeed />
+          <SelectedPets />
+        </div>
+      </PetsContextProvider>
+    </StyledApp>
   );
 };
 
