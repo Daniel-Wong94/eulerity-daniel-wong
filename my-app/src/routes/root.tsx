@@ -1,11 +1,14 @@
 import { NavBar, SearchBar, PetManager } from "../components";
+import { SelectedPetsContextProvider } from "../context/SelectedPetsContext";
 
 export const Root = () => {
   return (
     <>
       <NavBar />
-      <SearchBar />
-      <PetManager />
+      <SelectedPetsContextProvider>
+        <SearchBar />
+        <PetManager />
+      </SelectedPetsContextProvider>
     </>
   );
 };

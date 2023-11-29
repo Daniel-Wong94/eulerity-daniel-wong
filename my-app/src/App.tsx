@@ -1,12 +1,10 @@
 import styled from "styled-components";
 import { PetsContextProvider } from "./context/PetsContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Root } from "./routes/root";
-import ErrorPage from "./routes/error-page";
-import { Pet } from "./routes/pet";
+import { Root, About, Error, Pet } from "./routes";
 
 const StyledApp = styled.div`
-  background-color: rgb(242, 226, 210);
+  background-color: rgb(250, 233, 205);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -16,11 +14,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Root />,
-    errorElement: <ErrorPage />,
+    errorElement: <Error />,
   },
   {
     path: "/:petId",
     element: <Pet />,
+  },
+  {
+    path: "/about",
+    element: <About />,
   },
 ]);
 

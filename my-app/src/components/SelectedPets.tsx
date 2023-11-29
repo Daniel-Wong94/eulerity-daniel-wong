@@ -6,24 +6,39 @@ import { downloadPet } from "../utils/downloadPet";
 
 const StyledSelectedPetsContainer = styled.div`
   display: flex;
-  flex-direction: column;
+  align-items: center;
   gap: 20px;
-  padding: 12px 12px;
-  /* width: 100%; */
   position: sticky;
   top: 0;
-  height: 100%;
-`;
-
-const StyledPetDownloads = styled.ul`
-  display: flex;
-  flex-direction: column;
 `;
 
 const StyledButtonContainer = styled.div`
   display: flex;
-  flex-direction: column;
   gap: 8px;
+`;
+
+const StyledButton = styled.button`
+  padding: 8px 12px;
+  font-size: 16px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: #2980b9;
+  }
+
+  &:disabled {
+    background-color: #ccc;
+    cursor: default;
+  }
+
+  &:active {
+    background-color: #17496b;
+  }
 `;
 
 const SelectedPets = () => {
@@ -39,25 +54,20 @@ const SelectedPets = () => {
 
   return (
     <StyledSelectedPetsContainer>
-      <h2>Selected Pets</h2>
-      <StyledPetDownloads>
-        {selectedPets?.map((pet) => (
-          <li key={pet.id}>{pet.title}</li>
-        ))}
-      </StyledPetDownloads>
+      <span>Selected: {selectedPets?.length}</span>
       <StyledButtonContainer>
-        <button
+        <StyledButton
           onClick={() => clearAllPets()}
           disabled={selectedPets?.length === 0 ? true : false}
         >
           Clear All
-        </button>
-        <button
+        </StyledButton>
+        <StyledButton
           onClick={handleDownloadAll}
           disabled={selectedPets?.length === 0 ? true : false}
         >
           Download All
-        </button>
+        </StyledButton>
       </StyledButtonContainer>
     </StyledSelectedPetsContainer>
   );

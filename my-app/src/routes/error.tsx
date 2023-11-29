@@ -9,7 +9,7 @@ const StyledErrorPage = styled.div`
   align-items: center;
 `;
 
-export default function ErrorPage() {
+export const Error = () => {
   const error: any = useRouteError();
   console.error(error);
 
@@ -22,4 +22,4 @@ export default function ErrorPage() {
       </p>
     </StyledErrorPage>
   );
-}
+};

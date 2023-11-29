@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { NavBar } from "../components";
 import { useParams, Link } from "react-router-dom";
 import { useContext } from "react";
-import { PetsContext } from "../context/PetsContext";
+import { PetsContext } from "../context";
 import { downloadPet } from "../utils/downloadPet";
 
 const StyledPetsRoute = styled.div`

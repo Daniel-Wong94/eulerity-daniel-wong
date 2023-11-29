@@ -4,6 +4,7 @@ import SearchButton from "./SearchButton";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { PetsContext } from "../context/PetsContext";
 import { SelectedPetsContext } from "../context/SelectedPetsContext";
+import SelectedPets from "./SelectedPets";
 
 const StyledSearchBar = styled.div`
   display: flex;
@@ -15,8 +16,13 @@ const StyledSearchBar = styled.div`
 
 const StyledFilter = styled.div`
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
+  padding: 12px 24px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background-color: rgb(250, 233, 205);
 `;
 
 const SearchBar = () => {
@@ -31,7 +37,7 @@ const SearchBar = () => {
   useEffect(() => {
     clearAllPets();
     sortByName();
-  }, [sort, sortByName, clearAllPets]);
+  }, [sort, sortByName]);
 
   return (
     <>
@@ -44,6 +50,7 @@ const SearchBar = () => {
           Sort A-Z:{" "}
           <input type="checkbox" checked={sort} onChange={handleSort} />
         </label>
+        <SelectedPets />
       </StyledFilter>
     </>
   );
