@@ -2,13 +2,14 @@ import styled from "styled-components";
 import { useContext } from "react";
 import { PetsContext } from "../context/PetsContext";
 import { SelectedPetsContext } from "../context/SelectedPetsContext";
+import { downloadPet } from "../utils/downloadPet";
 
 const StyledSelectedPetsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
   padding: 12px 12px;
-  width: 100%;
+  /* width: 100%; */
   position: sticky;
   top: 0;
   height: 100%;
@@ -29,6 +30,11 @@ const SelectedPets = () => {
   const { loading } = useContext(PetsContext);
   const { selectedPets, clearAllPets } = useContext(SelectedPetsContext);
 
+  const handleDownloadAll = () => {
+    selectedPets?.forEach((pet) => downloadPet(pet));
+    clearAllPets();
+  };
+
   if (loading) return null;
 
   return (
@@ -40,14 +46,15 @@ const SelectedPets = () => {
         ))}
       </StyledPetDownloads>
       <StyledButtonContainer>
-        <button onClick={() => clearAllPets()}>Clear All</button>
         <button
-          onClick={() =>
-            window.open(
-              "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?format=tiny",
-              "_blank"
-            )
-          }
+          onClick={() => clearAllPets()}
+          disabled={selectedPets?.length === 0 ? true : false}
+        >
+          Clear All
+        </button>
+        <button
+          onClick={handleDownloadAll}
+          disabled={selectedPets?.length === 0 ? true : false}
         >
           Download All
         </button>

@@ -10,7 +10,11 @@ const StyledNav = styled.nav`
 `;
 
 const NavBar = () => {
-  return <StyledNav>Download Pet Photos!</StyledNav>;
+  return (
+    <StyledNav>
+      <strong>petty</strong>images
+    </StyledNav>
+  );
 };
 
 export default NavBar;

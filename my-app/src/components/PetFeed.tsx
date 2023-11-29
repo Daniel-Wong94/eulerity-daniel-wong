@@ -4,10 +4,9 @@ import PetCard from "./PetCard";
 import styled from "styled-components";
 
 const StyledPetFeed = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  padding: 0 24px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  width: 100%;
 `;
 
 const PetFeed = () => {
