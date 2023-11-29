@@ -37,6 +37,7 @@ export const SelectedPetsContextProvider = ({
 
   const clearAllPets = () => {
     setSelectedPets([]);
+    console.log("SELECTED", selectedPets);
   };
 
   const isChecked = (petId: string) => {

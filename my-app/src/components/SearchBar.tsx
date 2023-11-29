@@ -3,6 +3,7 @@ import styled from "styled-components";
 import SearchButton from "./SearchButton";
 import { ChangeEvent, useContext, useEffect, useState } from "react";
 import { PetsContext } from "../context/PetsContext";
+import { SelectedPetsContext } from "../context/SelectedPetsContext";
 
 const StyledSearchBar = styled.div`
   display: flex;
@@ -21,14 +22,16 @@ const StyledFilter = styled.div`
 const SearchBar = () => {
   const [sort, setSort] = useState(true);
   const { sortByName } = useContext(PetsContext);
+  const { clearAllPets } = useContext(SelectedPetsContext);
 
   const handleSort = (e: ChangeEvent<HTMLInputElement>) => {
     setSort(e.target.checked);
   };
 
   useEffect(() => {
+    clearAllPets();
     sortByName();
-  }, [sort, sortByName]);
+  }, [sort, sortByName, clearAllPets]);
 
   return (
     <>

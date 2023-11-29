@@ -1,9 +1,9 @@
 import styled from "styled-components";
-import { NavBar, PetManager, SearchBar } from "./components";
 import { PetsContextProvider } from "./context/PetsContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Root } from "./routes/root";
 import ErrorPage from "./routes/error-page";
+import { Pet } from "./routes/pet";
 
 const StyledApp = styled.div`
   background-color: rgb(242, 226, 210);
@@ -17,6 +17,10 @@ const router = createBrowserRouter([
     path: "/",
     element: <Root />,
     errorElement: <ErrorPage />,
+  },
+  {
+    path: "/:petId",
+    element: <Pet />,
   },
 ]);
 
