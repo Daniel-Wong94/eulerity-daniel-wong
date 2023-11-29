@@ -66,7 +66,7 @@ const StyledOverlay = styled.div`
   }
 `;
 
-const StyledSelectOverlay = styled.input`
+const StyledSelect = styled.input`
   position: absolute;
   top: 12px;
   right: 12px;
@@ -85,11 +85,11 @@ const PetCard: React.FC<PetCardProps> = ({ pet }) => {
 
   useEffect(() => {
     isSelected ? addPet(pet) : removePet(pet.id);
-  }, [isSelected, pet]);
+  }, [isSelected, pet, addPet, removePet]);
 
   return (
     <CardContainer>
-      <StyledSelectOverlay
+      <StyledSelect
         type="checkbox"
         onChange={handleSelection}
         checked={isChecked(pet.id)}

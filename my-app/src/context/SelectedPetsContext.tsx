@@ -1,4 +1,4 @@
-import { ReactNode, createContext, useState } from "react";
+import { ReactNode, createContext, useCallback, useState } from "react";
 import { Pet } from "../types/PetTypes";
 
 type SelectedPetsContextProp = {
@@ -27,18 +27,17 @@ export const SelectedPetsContextProvider = ({
   const [selectedPets, setSelectedPets] = useState<Pet[]>([]);
 
   // actions for selected pets
-  const addPet = (pet: Pet) => {
+  const addPet = useCallback((pet: Pet) => {
     setSelectedPets((prev: Pet[]) => [...prev, pet]);
-  };
+  }, []);
 
-  const removePet = (petId: string) => {
+  const removePet = useCallback((petId: string) => {
     setSelectedPets((prev: Pet[]) => prev.filter((pet) => pet.id !== petId));
-  };
+  }, []);
 
-  const clearAllPets = () => {
+  const clearAllPets = useCallback(() => {
     setSelectedPets([]);
-    console.log("SELECTED", selectedPets);
-  };
+  }, []);
 
   const isChecked = (petId: string) => {
     return selectedPets.some((pet) => pet.id === petId);

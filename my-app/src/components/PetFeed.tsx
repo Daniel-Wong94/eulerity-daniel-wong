@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import React, { useContext } from "react";
 import { PetsContext } from "../context/PetsContext";
 import PetCard from "./PetCard";
 import styled from "styled-components";
@@ -9,7 +9,11 @@ const StyledPetFeed = styled.div`
   width: 100%;
 `;
 
-const PetFeed = () => {
+type PetFeedProps = {
+  searchTerm: string;
+};
+
+const PetFeed: React.FC<PetFeedProps> = ({ searchTerm }) => {
   const { pets, loading, error } = useContext(PetsContext);
 
   return (

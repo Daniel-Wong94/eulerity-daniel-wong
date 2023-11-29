@@ -11,11 +11,17 @@ const StyledNav = styled.nav`
   padding: 1rem;
 `;
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+  color: black;
+  font-weight: 400;
+`;
+
 const NavBar = () => {
   return (
     <StyledNav>
       <PettyImagesLogo />
-      <Link to={"/about"}>About</Link>
+      <StyledLink to={"/about"}>About</StyledLink>
     </StyledNav>
   );
 };
