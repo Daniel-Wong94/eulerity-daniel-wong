@@ -1,11 +1,7 @@
 import styled from "styled-components";
-import { Pet } from "../types/PetTypes";
 import { useContext } from "react";
 import { PetsContext } from "../context/PetsContext";
-
-type SelectedPetsProps = {
-  selectedPets: Pet[];
-};
+import { SelectedPetsContext } from "../context/SelectedPetsContext";
 
 const StyledSelectedPetsContainer = styled.div`
   display: flex;
@@ -29,8 +25,9 @@ const StyledButtonContainer = styled.div`
   gap: 8px;
 `;
 
-const SelectedPets: React.FC<SelectedPetsProps> = ({ selectedPets }) => {
+const SelectedPets = () => {
   const { loading } = useContext(PetsContext);
+  const { selectedPets, clearAllPets } = useContext(SelectedPetsContext);
 
   if (loading) return null;
 
@@ -38,13 +35,22 @@ const SelectedPets: React.FC<SelectedPetsProps> = ({ selectedPets }) => {
     <StyledSelectedPetsContainer>
       <h2>Selected Pets</h2>
       <StyledPetDownloads>
-        {selectedPets.map((pet) => (
-          <li>{pet.title}</li>
+        {selectedPets?.map((pet) => (
+          <li key={pet.id}>{pet.title}</li>
         ))}
       </StyledPetDownloads>
       <StyledButtonContainer>
-        <button>Clear All</button>
-        <button>Download All</button>
+        <button onClick={() => clearAllPets()}>Clear All</button>
+        <button
+          onClick={() =>
+            window.open(
+              "https://images.pexels.com/photos/2607544/pexels-photo-2607544.jpeg?format=tiny",
+              "_blank"
+            )
+          }
+        >
+          Download All
+        </button>
       </StyledButtonContainer>
     </StyledSelectedPetsContainer>
   );

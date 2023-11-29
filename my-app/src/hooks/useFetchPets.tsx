@@ -11,6 +11,11 @@ const useFetchPets = (url: string) => {
       try {
         const response = await fetch(url);
         const pets = await response.json();
+
+        pets.sort((a: Pet, b: Pet) =>
+          a["title"].toLowerCase() > b["title"].toLowerCase() ? 1 : -1
+        );
+
         setPets(pets);
       } catch (error) {
         setError(error);
@@ -20,9 +25,10 @@ const useFetchPets = (url: string) => {
     };
 
     fetchPets();
+    // this shouldn't refetch when resorting
   }, [url]);
 
-  return { pets, loading, error };
+  return { pets, setPets, loading, error };
 };
 
 export default useFetchPets;

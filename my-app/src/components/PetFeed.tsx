@@ -10,18 +10,15 @@ const StyledPetFeed = styled.div`
   padding: 0 24px;
 `;
 
-type PetFeedProps = {
-  setSelectedPets: Function;
-};
-
-const PetFeed: React.FC<PetFeedProps> = ({ setSelectedPets }) => {
+const PetFeed = () => {
   const { pets, loading, error } = useContext(PetsContext);
 
   return (
     <StyledPetFeed>
       {loading && <div>Loading Pets...</div>}
+      {error && <div>Error fetching pets!</div>}
       {pets?.map((pet) => (
-        <PetCard key={pet.id} pet={pet} setSelectedPets={setSelectedPets} />
+        <PetCard key={pet.id} pet={pet} />
       ))}
     </StyledPetFeed>
   );

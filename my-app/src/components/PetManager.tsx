@@ -1,8 +1,7 @@
 import PetFeed from "./PetFeed";
 import SelectedPets from "./SelectedPets";
 import styled from "styled-components";
-import { useState } from "react";
-import { Pet } from "../types/PetTypes";
+import { SelectedPetsContextProvider } from "../context/SelectedPetsContext";
 
 const StyledPetManager = styled.div`
   display: flex;
@@ -11,12 +10,12 @@ const StyledPetManager = styled.div`
 `;
 
 const PetManager = () => {
-  const [selectedPets, setSelectedPets] = useState<Pet[]>([]);
-
   return (
     <StyledPetManager>
-      <PetFeed setSelectedPets={setSelectedPets} />
-      <SelectedPets selectedPets={selectedPets} />
+      <SelectedPetsContextProvider>
+        <PetFeed />
+        <SelectedPets />
+      </SelectedPetsContextProvider>
     </StyledPetManager>
   );
 };

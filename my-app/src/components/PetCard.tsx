@@ -1,10 +1,10 @@
-import React, { ChangeEvent } from "react";
+import React, { ChangeEvent, useContext } from "react";
 import styled from "styled-components";
 import { Pet } from "../types/PetTypes";
+import { SelectedPetsContext } from "../context/SelectedPetsContext";
 
 type PetCardProps = {
   pet: Pet;
-  setSelectedPets: Function;
 };
 
 const CardContainer = styled.div`
@@ -54,17 +54,13 @@ const Image = styled.img`
   margin-top: 10px;
 `;
 
-const PetCard: React.FC<PetCardProps> = ({ pet, setSelectedPets }) => {
+const PetCard: React.FC<PetCardProps> = ({ pet }) => {
+  const { addPet, removePet, isChecked } = useContext(SelectedPetsContext);
+
   const handleSelection = (e: ChangeEvent<HTMLInputElement>) => {
     const checked = e.target.checked;
 
-    if (checked) {
-      setSelectedPets((prev: Pet[]) => [...prev, pet]);
-    } else {
-      setSelectedPets((prev: Pet[]) =>
-        [...prev].filter((p) => p.id !== pet.id)
-      );
-    }
+    checked ? addPet(pet) : removePet(pet.id);
   };
 
   return (
@@ -78,7 +74,11 @@ const PetCard: React.FC<PetCardProps> = ({ pet, setSelectedPets }) => {
       <CardSegment>
         <label>
           Add to Downloads
-          <input type="checkbox" onChange={handleSelection} />
+          <input
+            type="checkbox"
+            onChange={handleSelection}
+            checked={isChecked(pet.id)}
+          />
         </label>
       </CardSegment>
     </CardContainer>
