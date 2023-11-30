@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { PetsContextProvider } from "./context/PetsContext";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
-import { Root, About, Error, Pet } from "./routes";
+import { Root, AboutRoute, Error, Pet } from "./routes";
 
 const StyledApp = styled.div`
   background-color: rgb(250, 233, 205);
@@ -22,7 +22,7 @@ const router = createBrowserRouter([
   },
   {
     path: "/about",
-    element: <About />,
+    element: <AboutRoute />,
   },
 ]);
 

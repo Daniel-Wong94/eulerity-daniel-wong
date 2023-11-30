@@ -1,4 +1,5 @@
 import { NavBar, SearchBar, PetFeed } from "../components";
+import { SearchResultsContextProvider } from "../context/SearchResultsContext";
 import { SelectedPetsContextProvider } from "../context/SelectedPetsContext";
 import { useState } from "react";
 
@@ -9,8 +10,10 @@ export const Root = () => {
     <>
       <NavBar />
       <SelectedPetsContextProvider>
-        <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-        <PetFeed searchTerm={searchTerm} />
+        <SearchResultsContextProvider>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          <PetFeed searchTerm={searchTerm} />
+        </SearchResultsContextProvider>
       </SelectedPetsContextProvider>
     </>
   );

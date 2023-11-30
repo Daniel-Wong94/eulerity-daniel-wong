@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import PettyImagesLogo from "../elements/PettyImagesLogo";
 import { Link } from "react-router-dom";
 
 const StyledNav = styled.nav`
@@ -8,7 +7,7 @@ const StyledNav = styled.nav`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 1rem;
+  padding: 12px 24px;
 `;
 
 const StyledLink = styled(Link)`
@@ -17,13 +16,4 @@ const StyledLink = styled(Link)`
   font-weight: 400;
 `;
 
-const NavBar = () => {
-  return (
-    <StyledNav>
-      <PettyImagesLogo />
-      <StyledLink to={"/about"}>About</StyledLink>
-    </StyledNav>
-  );
-};
-
-export default NavBar;
+export { StyledLink, StyledNav };

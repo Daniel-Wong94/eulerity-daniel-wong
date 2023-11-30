@@ -1,9 +1,10 @@
-import { NavBar } from "../components";
+import { NavBar, About } from "../components";
 
-export const About = () => {
+export const AboutRoute = () => {
   return (
     <>
       <NavBar />
+      <About />
     </>
   );
 };

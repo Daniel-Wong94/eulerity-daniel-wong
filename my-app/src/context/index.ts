@@ -1,4 +1,18 @@
-import { PetsContext } from "./PetsContext";
-import { SelectedPetsContext } from "./SelectedPetsContext";
+import { PetsContext, PetsContextProvider } from "./PetsContext";
+import {
+  SelectedPetsContext,
+  SelectedPetsContextProvider,
+} from "./SelectedPetsContext";
+import {
+  SearchResultsContext,
+  SearchResultsContextProvider,
+} from "./SearchResultsContext";
 
-export { PetsContext, SelectedPetsContext };
+export {
+  PetsContext,
+  PetsContextProvider,
+  SelectedPetsContext,
+  SelectedPetsContextProvider,
+  SearchResultsContext,
+  SearchResultsContextProvider,
+};
