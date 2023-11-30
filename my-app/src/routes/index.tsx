@@ -1,6 +1,6 @@
 import { AboutRoute } from "./about";
 import { Error } from "./error";
-import { Pet } from "./pet";
+import { PetRoute } from "./pet";
 import { Root } from "./root";
 
-export { AboutRoute, Error, Pet, Root };
+export { AboutRoute, Error, PetRoute, Root };
