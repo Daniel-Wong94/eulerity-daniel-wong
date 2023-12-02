@@ -3,6 +3,7 @@ import { NavBar, PetContainer } from "../components";
 import { useParams } from "react-router-dom";
 import { useContext } from "react";
 import { PetsContext } from "../context";
+import Footer from "../components/Footer/Footer";
 
 const StyledPetsRoute = styled.div`
   height: 100vh;
@@ -17,6 +18,7 @@ export const PetRoute = () => {
     <StyledPetsRoute>
       <NavBar />
       <PetContainer pet={pet ?? null} />
+      <Footer />
     </StyledPetsRoute>
   );
 };

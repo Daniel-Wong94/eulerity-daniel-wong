@@ -14,26 +14,25 @@ const StyledButtonContainer = styled.div`
 `;
 
 const StyledButton = styled.button`
-  padding: 8px 12px;
-  font-size: 16px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+  border: 1px solid black;
+  background-color: white;
+  text-transform: uppercase;
+  border-radius: 4px;
+  align-self: flex-start;
+  padding: 12px 24px;
+  transition: all 0.4s ease;
 
   &:hover {
-    background-color: #2980b9;
+    cursor: pointer;
+    background-color: black;
+    color: white;
   }
 
   &:disabled {
-    background-color: #ccc;
     cursor: default;
-  }
-
-  &:active {
-    background-color: #17496b;
+    background-color: white;
+    color: #808080;
+    border: 1px solid #808080;
   }
 `;
 

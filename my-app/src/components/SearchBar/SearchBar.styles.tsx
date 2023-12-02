@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledSearchBar = styled.div`
+const StyledSearchBar = styled.form`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -20,23 +20,31 @@ const StyledFilter = styled.div`
 `;
 
 const StyledSearchInput = styled.input`
-  padding: 12px;
+  padding: 8px;
   font-size: 16px;
   width: 60%;
 `;
 
 const StyledButton = styled.button`
-  padding: 10px 20px;
-  font-size: 16px;
-  background-color: #3498db;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  transition: background-color 0.3s ease;
-  cursor: pointer;
+  border: 1px solid black;
+  background-color: white;
+  text-transform: uppercase;
+  border-radius: 4px;
+  align-self: flex-start;
+  padding: 12px 24px;
+  transition: all 0.4s ease;
 
   &:hover {
-    background-color: #2980b9;
+    cursor: pointer;
+    background-color: black;
+    color: white;
+  }
+
+  &:disabled {
+    cursor: default;
+    background-color: white;
+    color: #808080;
+    border: 1px solid #808080;
   }
 `;
 

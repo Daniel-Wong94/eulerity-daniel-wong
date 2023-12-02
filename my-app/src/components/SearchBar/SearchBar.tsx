@@ -22,7 +22,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
   const [sort, setSort] = useState(true);
   const { pets, sortByName } = useContext(PetsContext);
   const { clearAllPets } = useContext(SelectedPetsContext);
-  const { setSearchResults, searchResults } = useContext(SearchResultsContext);
+  const { setSearchResults } = useContext(SearchResultsContext);
 
   const handleSort = (e: ChangeEvent<HTMLInputElement>) => {
     setSort(e.target.checked);
@@ -37,7 +37,9 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
     setSearchTerm(e.target.value);
   };
 
-  const handleSearchPets = () => {
+  const handleSearchPets = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
     if (pets?.length) {
       const results = searchPets(pets, searchTerm);
       if (searchTerm === "") {
@@ -50,13 +52,13 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <>
-      <StyledSearchBar>
+      <StyledSearchBar onSubmit={handleSearchPets}>
         <StyledSearchInput
           placeholder="Fuzzy search by title or description (pun intended)"
           value={searchTerm}
           onChange={handleSearchChange}
         />
-        <StyledButton onClick={handleSearchPets}>Search</StyledButton>
+        <StyledButton type="submit">Search</StyledButton>
       </StyledSearchBar>
       <StyledFilter>
         <label>
