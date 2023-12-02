@@ -1,10 +1,14 @@
-import { StyledAboutContainer } from "./About.styles";
+import {
+  StyledAboutContainer,
+  StyledHeader,
+  StyledLinksContainer,
+} from "./About.styles";
 
 const About = () => {
   return (
-    <StyledAboutContainer>
-      <h1>About Me</h1>
-      <div>
+    <>
+      <StyledHeader>About Me</StyledHeader>
+      <StyledAboutContainer>
         <img
           src="https://www.danielwong.io/static/media/Headshot.6935ef85d30cc758f294.png"
           height={300}
@@ -18,23 +22,16 @@ const About = () => {
           ML/AI in improving healthcare workflow and overall patient experience
           and decided that I wanted to be a part of building innovative
           technologies.
-        </p>
-        <p>To learn more about me:</p>
-        <ul>
-          <li>
+          <StyledLinksContainer>
             <a href="https://www.linkedin.com/in/daniel-kachun-wong/">
               LinkedIn
             </a>
-          </li>
-          <li>
             <a href="https://github.com/Daniel-Wong94">Github</a>
-          </li>
-          <li>
             <a href="https://danielwong.io">Portfolio I built in React</a>
-          </li>
-        </ul>
-      </div>
-    </StyledAboutContainer>
+          </StyledLinksContainer>
+        </p>
+      </StyledAboutContainer>
+    </>
   );
 };
 
