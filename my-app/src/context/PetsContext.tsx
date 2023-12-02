@@ -22,6 +22,9 @@ export const PetsContext = createContext<PetsContextValue>({
 });
 
 export const PetsContextProvider = ({ children }: PetsContextProps) => {
+  /**
+   * @summary This context will store the pets returned from /GET pets
+   */
   const { pets, setPets, loading, error } = useFetchPets(
     "https://eulerity-hackathon.appspot.com/pets"
   );

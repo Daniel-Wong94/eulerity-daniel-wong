@@ -27,6 +27,9 @@ export const SearchResultsContext = createContext<SearchResultsContextValue>({
 export const SearchResultsContextProvider: React.FC<
   SearchResultsContextProp
 > = ({ children }) => {
+  /**
+   * @summary This context will store the search results that are obtained from fuzzy search
+   */
   const [searchResults, setSearchResults] = useState<Pet[] | null>(null);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<any>(undefined);

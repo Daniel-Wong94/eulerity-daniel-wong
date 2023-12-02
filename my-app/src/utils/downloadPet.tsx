@@ -1,6 +1,11 @@
 import { Pet } from "../types/PetTypes";
 
 export const downloadPet = async (pet: Pet) => {
+  /**
+   * @summary - This function will convert the pet url into a blob type, then create an anchor tag pointing to the blob
+   * @param { Pet } pet - Pet object
+   * @returns {void}
+   */
   try {
     const response = await fetch(pet.url);
     const blob = await response.blob();

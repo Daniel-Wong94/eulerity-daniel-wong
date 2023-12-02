@@ -5,7 +5,7 @@ import { Root, AboutRoute, Error, PetRoute } from "./routes";
 
 const StyledApp = styled.div`
   background-color: rgb(250, 233, 205);
-  height: 100%;
+  /* height: 100%; */
   display: flex;
   flex-direction: column;
 `;

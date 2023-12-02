@@ -1,42 +1,34 @@
-import styled from "styled-components";
-import { Link } from "react-router-dom";
 import { Pet } from "../../types/PetTypes";
 import { downloadPet } from "../../utils/downloadPet";
-
-const StyledPetContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`;
-
-const StyledBackButton = styled(Link)`
-  padding: 10px 24px;
-  font-size: 16px;
-`;
-
-const StyledPetInfoContainer = styled.div`
-  display: flex;
-  justify-content: space-around;
-`;
+import {
+  StyledPetContainer,
+  StyledBackButton,
+  StyledPetImage,
+  StyledPetInfo,
+  StyledDownloadButton,
+} from "./Pet.styles";
 
 const PetContainer = ({ pet }: { pet: Pet | null }) => {
   if (!pet) return <div>Loading...</div>;
 
   return (
     <StyledPetContainer>
-      <StyledBackButton to="/">Go Back</StyledBackButton>
-      <StyledPetInfoContainer>
-        <div>
-          <img src={pet?.url} alt={pet?.description} height={300} />
-        </div>
-        <div>
-          <h1>{pet?.title}</h1>
+      <StyledBackButton to="/">View all</StyledBackButton>
+      <StyledPetImage $backgroundImage={pet?.url}>
+        <img src={pet?.url} alt={pet?.description} />
+      </StyledPetImage>
+      <StyledPetInfo>
+        <h1>{pet?.title}</h1>
+        <div className="description">
           <p>{pet?.created}</p>
           <p>{pet?.description}</p>
-          {pet && (
-            <button onClick={() => downloadPet(pet)}>Download Image</button>
-          )}
         </div>
-      </StyledPetInfoContainer>
+        {pet && (
+          <StyledDownloadButton onClick={() => downloadPet(pet)}>
+            Download Image
+          </StyledDownloadButton>
+        )}
+      </StyledPetInfo>
     </StyledPetContainer>
   );
 };

@@ -24,6 +24,9 @@ export const SelectedPetsContext = createContext<SelectedPetsContextValue>({
 export const SelectedPetsContextProvider = ({
   children,
 }: SelectedPetsContextProp) => {
+  /**
+   * @summary This context will store the user's selected pets for multi-downloading
+   */
   const [selectedPets, setSelectedPets] = useState<Pet[]>([]);
 
   // actions for selected pets
