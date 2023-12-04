@@ -21,7 +21,7 @@ type SearchBarProps = {
 const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
   const [sort, setSort] = useState(true);
   const { pets, sortByName } = useContext(PetsContext);
-  const { clearAllPets } = useContext(SelectedPetsContext);
+  const { clearAllPets, selectAllPets } = useContext(SelectedPetsContext);
   const { setSearchResults } = useContext(SearchResultsContext);
 
   const handleSort = (e: ChangeEvent<HTMLInputElement>) => {
@@ -52,6 +52,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
 
   return (
     <>
+      {/* <h1>Move the World</h1> */}
+      <button onClick={selectAllPets}>Select All</button>
       <StyledSearchBar onSubmit={handleSearchPets}>
         <StyledSearchInput
           placeholder="Fuzzy search by title or description (pun intended)"

@@ -1,5 +1,13 @@
-import { ReactNode, createContext, useCallback, useState } from "react";
+import {
+  ReactNode,
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useState,
+} from "react";
 import { Pet } from "../types/PetTypes";
+import { PetsContext } from "./PetsContext";
 
 type SelectedPetsContextProp = {
   children: ReactNode;
@@ -10,6 +18,7 @@ type SelectedPetsContextValue = {
   addPet: (pet: Pet) => void;
   removePet: (petId: string) => void;
   clearAllPets: () => void;
+  selectAllPets: () => void;
   isChecked: (petId: string) => boolean;
 };
 
@@ -18,6 +27,7 @@ export const SelectedPetsContext = createContext<SelectedPetsContextValue>({
   addPet: () => {},
   removePet: () => {},
   clearAllPets: () => {},
+  selectAllPets: () => {},
   isChecked: () => false,
 });
 
@@ -28,6 +38,11 @@ export const SelectedPetsContextProvider = ({
    * @summary This context will store the user's selected pets for multi-downloading
    */
   const [selectedPets, setSelectedPets] = useState<Pet[]>([]);
+  const { pets } = useContext(PetsContext);
+
+  useEffect(() => {
+    console.log("SELECTED PETS", selectedPets);
+  }, [selectedPets]);
 
   // actions for selected pets
   const addPet = useCallback((pet: Pet) => {
@@ -42,6 +57,10 @@ export const SelectedPetsContextProvider = ({
     setSelectedPets([]);
   }, []);
 
+  const selectAllPets = useCallback(() => {
+    setSelectedPets([...(pets ?? [])]);
+  }, [pets]);
+
   const isChecked = (petId: string) => {
     return selectedPets.some((pet) => pet.id === petId);
   };
@@ -50,6 +69,7 @@ export const SelectedPetsContextProvider = ({
     selectedPets,
     addPet,
     removePet,
+    selectAllPets,
     clearAllPets,
     isChecked,
   };

@@ -23,7 +23,7 @@ const SelectedPets = () => {
       <span>Selected: {selectedPets?.length}</span>
       <StyledButtonContainer>
         <StyledButton
-          onClick={() => clearAllPets()}
+          onClick={clearAllPets}
           disabled={selectedPets?.length === 0 ? true : false}
         >
           Clear All
@@ -32,7 +32,7 @@ const SelectedPets = () => {
           onClick={handleDownloadAll}
           disabled={selectedPets?.length === 0 ? true : false}
         >
-          Download All
+          Download Selected
         </StyledButton>
       </StyledButtonContainer>
     </StyledSelectedPetsContainer>
