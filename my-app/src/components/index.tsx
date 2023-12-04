@@ -5,6 +5,7 @@ import PetFeed from "./PetFeed/PetFeed";
 import SelectedPets from "./SelectedPets/SelectedPets";
 import About from "./About/About";
 import PetContainer from "./Pet/Pet";
+import Loading from "./Loading/Loading";
 
 export {
   PetCard,
@@ -14,4 +15,5 @@ export {
   SelectedPets,
   About,
   PetContainer,
+  Loading,
 };

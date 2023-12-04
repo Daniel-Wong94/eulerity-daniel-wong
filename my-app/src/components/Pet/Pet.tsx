@@ -1,5 +1,6 @@
 import { Pet } from "../../types/PetTypes";
 import { downloadPet } from "../../utils/downloadPet";
+import Loading from "../Loading/Loading";
 import {
   StyledPetContainer,
   StyledBackButton,
@@ -9,7 +10,7 @@ import {
 } from "./Pet.styles";
 
 const PetContainer = ({ pet }: { pet: Pet | null }) => {
-  if (!pet) return <div>Loading...</div>;
+  if (!pet) return <Loading message={"Loading Pet Info..."} />;
 
   return (
     <StyledPetContainer>
