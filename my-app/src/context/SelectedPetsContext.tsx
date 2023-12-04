@@ -3,7 +3,6 @@ import {
   createContext,
   useCallback,
   useContext,
-  useEffect,
   useState,
 } from "react";
 import { Pet } from "../types/PetTypes";
@@ -39,10 +38,6 @@ export const SelectedPetsContextProvider = ({
    */
   const [selectedPets, setSelectedPets] = useState<Pet[]>([]);
   const { pets } = useContext(PetsContext);
-
-  useEffect(() => {
-    console.log("SELECTED PETS", selectedPets);
-  }, [selectedPets]);
 
   // actions for selected pets
   const addPet = useCallback((pet: Pet) => {

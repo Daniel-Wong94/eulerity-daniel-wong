@@ -10,21 +10,29 @@ import {
   StyledOverlay,
   StyledSelect,
 } from "./PetCard.styles";
+import { PetsContext } from "../../context";
 
 type PetCardProps = {
   pet: Pet;
 };
 
 const PetCard: React.FC<PetCardProps> = ({ pet }) => {
-  const { addPet, removePet, isChecked } = useContext(SelectedPetsContext);
+  const { addPet, removePet, isChecked, selectedPets } =
+    useContext(SelectedPetsContext);
+  const { pets } = useContext(PetsContext);
   const [isSelected, setIsSelected] = useState(false);
 
   const handleSelection = (e: ChangeEvent<HTMLInputElement>) => {
     setIsSelected((prev) => !prev);
   };
 
+  // keep selected pets in sync with checkbox
   useEffect(() => {
-    isSelected ? addPet(pet) : removePet(pet.id);
+    if (selectedPets?.length === pets?.length || !isSelected) {
+      removePet(pet.id);
+    } else {
+      addPet(pet);
+    }
   }, [isSelected, pet, addPet, removePet]);
 
   return (
