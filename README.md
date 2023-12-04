@@ -6,6 +6,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 Make sure you cd into the my-app directory:
 
+### `npm install`
+
+Installs all required packages listed in package.json.
+
 ### `npm start`
 
 Runs the app in the development mode.\
@@ -52,8 +56,9 @@ As stated above, I created a useFetchPets custom hook to handle the fetch and to
 
 I chose not to use Redux because of its inheritly large code overhead. I figured I'd only need about 1 - 2 contexts for this small application. If I had to work with more than just pets data, I would've opted for Redux.
 
-## Possible Add On
+## Libraries Used
 
-- Select All Button
-- Sort by creation date: couldn't because API's pets all have the same creation date
-- API did not provide any UUID, therefore could not normalize my data. Possible issues, /pets/:petTitle could have same title.
+- uuid : https://www.npmjs.com/package/uuid
+- styled-components : https://styled-components.com/
+- react-router-dom : https://reactrouter.com/en/main
+- fuse.js : https://www.fusejs.io/
