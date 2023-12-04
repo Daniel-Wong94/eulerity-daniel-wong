@@ -12,6 +12,7 @@ const SelectedPets = () => {
   const { selectedPets, clearAllPets, selectAllPets } =
     useContext(SelectedPetsContext);
   const { pets } = useContext(PetsContext);
+
   const handleDownloadAll = () => {
     selectedPets?.forEach((pet) => downloadPet(pet));
     clearAllPets();
