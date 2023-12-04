@@ -4,6 +4,7 @@ import PetCard from "../PetCard/PetCard";
 import Loading from "../Loading/Loading";
 import { SearchResultsContext } from "../../context/SearchResultsContext";
 import { StyledPetFeed } from "./PetFeed.styles";
+import NoPetsFound from "../NoPetsFound/NoPetsFound";
 
 type PetFeedProps = {
   searchTerm: string;
@@ -14,11 +15,11 @@ const PetFeed: React.FC<PetFeedProps> = ({ searchTerm }) => {
   const { searchResults } = useContext(SearchResultsContext);
 
   if (loading) return <Loading message={"Loading pets..."} />;
+  if (searchResults && searchResults.length === 0) return <NoPetsFound />;
+  if (error) return <div>Error fetching pets!</div>;
 
   return (
     <StyledPetFeed>
-      {error && <div>Error fetching pets!</div>}
-      {searchResults && searchResults.length === 0 && <div>No Pets Found!</div>}
       {!searchResults
         ? pets?.map((pet) => <PetCard key={pet.id} pet={pet} />)
         : searchResults.map((pet) => <PetCard key={pet.id} pet={pet} />)}
