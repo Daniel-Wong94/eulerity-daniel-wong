@@ -1,6 +1,6 @@
 # Eulerity Hackathon by Daniel Wong
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[Live Link](https://eulerity-daniel-wong.vercel.app/)
 
 ## Available Scripts
 
