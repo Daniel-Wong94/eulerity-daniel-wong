@@ -11,6 +11,8 @@ import {
   StyledFilter,
   StyledSearchInput,
   StyledButton,
+  StyledHeader,
+  StyledSearchContainer,
 } from "./SearchBar.styles";
 
 type SearchBarProps = {
@@ -51,8 +53,8 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
   };
 
   return (
-    <>
-      {/* <h1>Move the World</h1> */}
+    <StyledSearchContainer>
+      <StyledHeader>Move the world</StyledHeader>
       <StyledSearchBar onSubmit={handleSearchPets}>
         <StyledSearchInput
           placeholder="Fuzzy search by title or description (pun intended)"
@@ -68,7 +70,7 @@ const SearchBar: React.FC<SearchBarProps> = ({ searchTerm, setSearchTerm }) => {
         </label>
         <SelectedPets />
       </StyledFilter>
-    </>
+    </StyledSearchContainer>
   );
 };
 

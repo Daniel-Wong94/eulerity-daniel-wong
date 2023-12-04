@@ -9,6 +9,7 @@ const StyledAboutContainer = styled.div`
   display: flex;
   justify-content: space-between;
   gap: 24px;
+  height: 80vh;
 `;
 
 const StyledLinksContainer = styled.span`

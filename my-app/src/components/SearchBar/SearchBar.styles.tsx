@@ -1,5 +1,17 @@
 import styled from "styled-components";
 
+const StyledSearchContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const StyledHeader = styled.h1`
+  font-size: 2.5rem;
+  align-self: center;
+  margin: 128px 0 12px 0;
+  font-weight: 400;
+`;
+
 const StyledSearchBar = styled.form`
   display: flex;
   align-items: center;
@@ -48,4 +60,11 @@ const StyledButton = styled.button`
   }
 `;
 
-export { StyledSearchBar, StyledFilter, StyledSearchInput, StyledButton };
+export {
+  StyledSearchBar,
+  StyledFilter,
+  StyledSearchInput,
+  StyledButton,
+  StyledHeader,
+  StyledSearchContainer,
+};
