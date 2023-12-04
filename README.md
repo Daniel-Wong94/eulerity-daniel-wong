@@ -1,1 +1,0 @@
-# eulerity-daniel-wong
