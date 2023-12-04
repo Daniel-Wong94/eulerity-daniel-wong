@@ -9,8 +9,9 @@ import {
 
 const SelectedPets = () => {
   const { loading } = useContext(PetsContext);
-  const { selectedPets, clearAllPets } = useContext(SelectedPetsContext);
-
+  const { selectedPets, clearAllPets, selectAllPets } =
+    useContext(SelectedPetsContext);
+  const { pets } = useContext(PetsContext);
   const handleDownloadAll = () => {
     selectedPets?.forEach((pet) => downloadPet(pet));
     clearAllPets();
@@ -22,6 +23,12 @@ const SelectedPets = () => {
     <StyledSelectedPetsContainer>
       <span>Selected: {selectedPets?.length}</span>
       <StyledButtonContainer>
+        <StyledButton
+          onClick={selectAllPets}
+          disabled={selectedPets?.length === pets?.length}
+        >
+          Select All
+        </StyledButton>
         <StyledButton
           onClick={clearAllPets}
           disabled={selectedPets?.length === 0 ? true : false}
